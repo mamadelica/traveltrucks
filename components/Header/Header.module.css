@@ -1,0 +1,38 @@
+.header {
+  background-color: var(--background-grey);
+  padding: 28px 64px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+}
+
+.headerNav {
+  margin-left: 450px;
+}
+
+.headerList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 32px;
+
+  list-style: none;
+}
+
+.headerItem {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.headerItem.active {
+  color: var(--accent);
+}
+
+.navLink {
+}

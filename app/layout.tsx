@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header/Header";
+import FiltersPanel from "@/components/catalog/FiltersPanel/FiltersPanel";
 
 export const metadata: Metadata = {
   title: "TravelTrucks — Campervan Rentals",
@@ -14,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header></Header>
+       
         {children}
+         <FiltersPanel></FiltersPanel>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 :root {
   --background: #ffffff;
+  --background-grey: #f7f7f7;
   --foreground: #101828;
   --accent: #d84343;
   --muted: #666666;
@@ -24,7 +25,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -45,7 +46,6 @@ h3 {
 button {
   cursor: pointer;
   font: inherit;
-  border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--button-bg);
   color: var(--button-text);
