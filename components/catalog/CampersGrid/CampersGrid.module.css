@@ -1,0 +1,125 @@
+.campersList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.campersItem {
+  border: 1px solid #dadde1;
+  border-radius: 20px;
+  padding: 24px;
+  width: 888px;
+  height: 368px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.camperImgWrapper {
+  border-radius: 10px;
+  width: 292px;
+  height: 320px;
+
+  background-color: blueviolet;
+}
+
+.camperInfo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardHeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 524px;
+}
+
+.cardHeaderTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  margin: 0;
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.camperPrise {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+}
+
+/* Btn Favorite */
+.btnFavorite {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btnFavorite:hover {
+  background-color: transparent;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.iconStar {
+  margin-right: 4px;
+}
+
+.iconMap {
+  margin-right: 4px;
+}
+
+.featuresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  list-style: none;
+}
+
+.featuresItem {
+  border-radius: 100px;
+  padding: 12px 18px;
+  background: #f2f4f7;
+  mix-blend-mode: multiply;
+}
+
+.showmoreBtn {
+  padding-inline: 16px;
+  width: 166px;
+  height: 56px;
+  border-radius: 200px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+
+  transition: background-color 0.2s ease;
+}
+
+.showmoreBtn:hover {
+  background-color: var(--accent);
+}

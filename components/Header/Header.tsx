@@ -13,10 +13,10 @@ export default function Header() {
       <nav className={css.headerNav}>
         <ul className={css.headerList}>
           <li className={css.headerItem}>
-            <Link href="" className={css.navLink}>Home</Link>
+            <Link href="/" className={css.navLink}>Home</Link>
           </li>
           <li className={css.headerItem}>
-            <Link href="" className={css.navLink}>Catalog</Link>
+            <Link href="/catalog" className={css.navLink}>Catalog</Link>
           </li>
         </ul>
       </nav>
