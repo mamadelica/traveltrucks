@@ -1,0 +1,85 @@
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 44px 57px 0 57px;
+  width: 641px;
+  height: 588px;
+}
+
+.headerBlock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.fieldsBlock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.label {
+}
+
+.input {
+  border-radius: 12px;
+  border: none;
+  background: #f7f7f7;
+  padding: 18px 337px 18px 18px;
+  width: 527px;
+  height: 60px;
+}
+
+.textarea {
+  border-radius: 10px;
+  border: none;
+  background: #f7f7f7;
+  padding: 18px 308px 76px 18px;
+  width: 527px;
+  height: 118px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.sendBtn {
+  margin: 0 auto;
+  border-radius: 200px;
+  padding-inline: 16px;
+  width: 166px;
+  height: 56px;
+}
