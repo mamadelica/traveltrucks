@@ -1,3 +1,9 @@
+.campersListWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .campersList {
   display: flex;
   flex-direction: column;
@@ -93,6 +99,7 @@
 }
 
 .featuresList {
+  min-height: 104px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -103,6 +110,7 @@
 .featuresItem {
   border-radius: 100px;
   padding: 12px 18px;
+  height: 48px;
   background: #f2f4f7;
   mix-blend-mode: multiply;
 }
@@ -122,4 +130,24 @@
 
 .showmoreBtn:hover {
   background-color: var(--accent);
+}
+
+.loadmoreBtn {
+  margin-top: 40px;
+  border: 1px solid #dadde1;
+  background-color: transparent;
+  border-radius: 200px;
+  padding: 16px 0;
+  width: 145px;
+  height: 56px;
+
+  color: #101828;
+
+  transition: border-color 0.2s ease;
+}
+
+.loadmoreBtn:hover {
+  border-color: #d84343;
+  background-color: transparent;
+  color: #101828;
 }

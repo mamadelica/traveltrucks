@@ -1,5 +1,14 @@
+import CamperCard from "@/components/catalog/CamperCard/CamperCard";
+import BookingForm from "@/components/sections/BookingForm/BookingForm";
+import Features from "@/components/sections/Features/Features";
+import RatingStars from "@/components/ui/RatingStars/RaitingStars";
+
 export default function CamperPage({ params }: { params: { id: string } }) {
     return <main>
-        <h1>Camper {params.id}</h1>
+        <CamperCard />
+        
+        <Features />
+        <BookingForm />
+        <RatingStars/>
     </main>;
 }

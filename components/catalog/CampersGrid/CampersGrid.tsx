@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function CampersGrid() {
   const [isActive, setIsActive] = useState(false);
   return (
-    <div>
+    <div className={css.campersListWrapper}>
       <ul className={css.campersList}>
         <li className={css.campersItem}>
           <div className={css.camperImgWrapper}></div>
@@ -60,15 +60,15 @@ export default function CampersGrid() {
             <div>
               <ul className={css.featuresList}>
                 <li className={css.featuresItem}>text</li>
-                <li className={css.featuresItem}>text</li>
-                <li className={css.featuresItem}>text</li>
-                <li className={css.featuresItem}>text</li>
+               
               </ul>
             </div>
             <button className={css.showmoreBtn}>Show more</button>
           </div>
         </li>
       </ul>
+
+      <button className={css.loadmoreBtn}>Load more</button>
     </div>
   );
 }
