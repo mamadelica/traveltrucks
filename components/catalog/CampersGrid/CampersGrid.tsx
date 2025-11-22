@@ -89,7 +89,7 @@ export default function CampersGrid() {
                   <CardMeta
                     rating={camper.rating}
                     location={camper.location}
-                    reviewsCount={camper.reviews.length}
+                    reviews={camper.reviews.length}
                   />
                 </div>
 
@@ -112,7 +112,7 @@ export default function CampersGrid() {
     .map((feature, idx) => (
       <li key={idx} className={css.featuresItem}>
         <svg className={css.featureIcon} width="20" height="20">
-          <use href={featureIcons[feature]} />
+          <use href={feature === false ? "" : featureIcons[feature]} />
         </svg>
         <span>{feature}</span>
       </li>
