@@ -7,7 +7,7 @@ import css from "./CamperCard.module.css";
 export default function CamperCard() {
   return <div className={css.cardWrapper}>
     <h3 className={css.cardHeaderTitle}>Mavericks</h3>
-    <CardMeta/>
+    <CardMeta rating={4} location="Ukraine" reviews={2}/>
     <p className={css.camperPrise}>€8000.00</p>
     <ul className={css.cardGallery}>
       <li className={css.cardPhoto}></li>
