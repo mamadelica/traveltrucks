@@ -48,7 +48,7 @@ interface Images {
   original: string;
 }
 
-interface Reviews {
+export interface Reviews {
   reviewer_name: string;
   reviewer_rating: number;
   comment: string;
@@ -56,5 +56,10 @@ interface Reviews {
 
 export const getCampersData = async (params: CampersParams): Promise<Data> => {
   const response = await backendApi.get<Data>(`/campers`, { params });
+  return response.data;
+};
+
+export const getCamperById = async (id: string): Promise<Camper> => {
+  const response = await backendApi.get<Camper>(`/campers/${id}`);
   return response.data;
 };

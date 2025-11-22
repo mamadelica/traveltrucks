@@ -1,10 +1,14 @@
 "use client"
 import css from './CamperTabs.module.css'
-import { useState } from "react";
 
-export default function CamperTabs() {
+interface Props {
+  activeTab: string,
+  setActiveTab: (v:string) => void
+}
 
-    const [activeTab, setActiveTab] = useState("features");
+export default function CamperTabs({activeTab, setActiveTab}: Props) {
+
+   
 
   return (
     <div className={css.tabsWrapper}>

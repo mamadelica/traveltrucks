@@ -6,6 +6,9 @@ import css from "./CampersGrid.module.css";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+
 
 
 const featureIcons: Record<string, string> = {
@@ -23,8 +26,9 @@ const featureIcons: Record<string, string> = {
 
 export default function CampersGrid() {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  const router = useRouter();
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: ["campers"],
     queryFn: async () => await getCampersData({ page: 1, limit: 10 }),
     refetchOnMount: false,
@@ -38,9 +42,13 @@ export default function CampersGrid() {
     );
   };
 
+  const handleClick = (id:string) => {
+  router.push(`/catalog/${id}`)
+}
+
   return (
     <div className={css.campersListWrapper}>
-      {isLoading && <p>Loading...</p>}
+      
       {isError && <p>Sorry, we fell...</p>}
 
       <ul className={css.campersList}>
@@ -121,7 +129,7 @@ export default function CampersGrid() {
 
                 </div>
 
-                <button className={css.showmoreBtn}>Show more</button>
+                <button onClick={() => handleClick(camper.id)} className={css.showmoreBtn}>Show more</button>
               </div>
             </li>
           );
