@@ -1,5 +1,6 @@
 "use client";
 
+import CardMeta from "../CardMeta/CardMeta";
 import css from "./CampersGrid.module.css";
 import { useState } from "react";
 
@@ -39,20 +40,7 @@ export default function CampersGrid() {
                 </div>
               </div>
 
-              <div className={css.meta}>
-                <span className={css.rating}>
-                  <svg className={css.iconStar} width="15" height="14">
-                    <use href="/icons/categories-sprite.svg#icon-star-yellow" />
-                  </svg>
-                  4.4(2 Reviews)
-                </span>
-                <span className={css.location}>
-                  <svg className={css.iconMap} width="16" height="16">
-                    <use href="/icons/categories-sprite.svg#icon-map-dark" />
-                  </svg>
-                  Kyiv, Ukraine
-                </span>
-              </div>
+              <CardMeta />
             </div>
             <p className={css.camperDescr}>
               Embrace simplicity and freedom with the Mavericks panel truck...
@@ -60,7 +48,6 @@ export default function CampersGrid() {
             <div>
               <ul className={css.featuresList}>
                 <li className={css.featuresItem}>text</li>
-               
               </ul>
             </div>
             <button className={css.showmoreBtn}>Show more</button>

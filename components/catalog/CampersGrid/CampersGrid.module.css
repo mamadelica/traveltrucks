@@ -84,20 +84,6 @@
   background-color: transparent;
 }
 
-.meta {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-}
-
-.iconStar {
-  margin-right: 4px;
-}
-
-.iconMap {
-  margin-right: 4px;
-}
-
 .featuresList {
   min-height: 104px;
   display: flex;

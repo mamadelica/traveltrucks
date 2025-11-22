@@ -54,6 +54,8 @@
 }
 
 .textarea {
+  resize: none;
+  font-family: --font-family;
   border-radius: 10px;
   border: none;
   background: #f7f7f7;
@@ -82,4 +84,85 @@
   padding-inline: 16px;
   width: 166px;
   height: 56px;
+}
+
+/* Календар */
+/* Загальний контейнер календаря */
+.customCalendar {
+  background-color: #fff;
+  border: 1px solid #475467;
+  border-radius: 12px;
+  padding: 12px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Верхня панель з місяцем і навігацією */
+:global(.customCalendar .react-datepicker__header) {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  color: #101828;
+
+  background-color: #fff;
+  padding: 8px 0;
+  border-bottom: none;
+}
+
+:global(.customCalendar .react-datepicker__day-names) {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+  color: #475467;
+  border-bottom: 1px solid #475467;
+  margin-bottom: 8px;
+}
+
+:global(.customCalendar .react-datepicker__day-name) {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Кожен день */
+:global(.customCalendar .react-datepicker__day) {
+  width: 36px;
+  height: 32px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 32px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Сьогодні */
+:global(.customCalendar .react-datepicker__day--today) {
+  font-weight: bold;
+}
+
+:global(.customCalendar .react-datepicker__day--selected) {
+  background: #475467;
+  color: #fff;
+  font-weight: bold;
+}
+
+:global(.customCalendar .react-datepicker__day:hover) {
+  border-radius: 32px;
+  /* color: #333; */
+}
+
+/* Навігаційні стрілки */
+.customCalendar .react-datepicker__navigation {
+  top: 10px;
+}
+
+.customCalendar .react-datepicker__navigation-icon::before {
+  border-color: #98a2b3;
+}
+
+/* Дні поза поточним місяцем */
+:global(.customCalendar .react-datepicker__day--outside-month) {
+  color: #98a2b3;
 }
