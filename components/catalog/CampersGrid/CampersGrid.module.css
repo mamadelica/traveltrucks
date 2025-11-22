@@ -30,6 +30,11 @@
   background-color: blueviolet;
 }
 
+.camperImg {
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .camperInfo {
   display: flex;
   align-items: flex-start;
@@ -85,7 +90,8 @@
 }
 
 .featuresList {
-  min-height: 104px;
+  height: 104px;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;

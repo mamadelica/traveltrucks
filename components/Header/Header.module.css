@@ -29,9 +29,15 @@
   line-height: 1.5;
   text-align: center;
   color: var(--foreground);
+
+  transition: all 0.2s ease;
 }
 
-.headerItem.active {
+.headerItem:hover {
+  color: var(--accent);
+}
+
+.active {
   color: var(--accent);
 }
 
