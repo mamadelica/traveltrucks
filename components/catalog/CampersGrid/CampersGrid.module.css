@@ -100,11 +100,15 @@
 }
 
 .featuresItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 2px;
+
   border-radius: 100px;
   padding: 12px 18px;
   height: 48px;
   background: #f2f4f7;
-  mix-blend-mode: multiply;
 }
 
 .showmoreBtn {
