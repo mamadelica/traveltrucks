@@ -3,30 +3,16 @@
 import { Camper, getCampersData } from "@/lib/api/api";
 import CardMeta from "../CardMeta/CardMeta";
 import css from "./CampersGrid.module.css";
-import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import FeaturesList from "@/components/sections/FeaturesList/FeaturesList";
+import { useFavorites } from "@/lib/Store/FavoriteContext";
 
 export default function CampersGrid() {
   const router = useRouter();
 
-  // Ініціалізація стану одразу з localStorage
-  const [favoriteIds, setFavoriteIds] = useState<string[]>(() => {
-    try {
-      const stored = localStorage.getItem("favoriteCampers");
-      return stored ? JSON.parse(stored) : [];
-    } catch {
-      return [];
-    }
-  });
-
-  // Збереження у localStorage при кожній зміні
-  useEffect(() => {
-    localStorage.setItem("favoriteCampers", JSON.stringify(favoriteIds));
-  }, [favoriteIds]);
-
+const { favoriteIds, toggleFavorite } = useFavorites(); 
   const { data, isError } = useQuery({
     queryKey: ["campers"],
     queryFn: async () => await getCampersData({ page: 1, limit: 10 }),
@@ -35,11 +21,7 @@ export default function CampersGrid() {
 
   const campersList = data?.items ?? [];
 
-  const toggleFavorite = (id: string) => {
-    setFavoriteIds((prev) =>
-      prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
-    );
-  };
+  
 
   const handleClick = (id: string) => {
     router.push(`/catalog/${id}`);

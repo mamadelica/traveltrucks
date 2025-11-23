@@ -5,6 +5,7 @@ import css from "./BookingForm.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 
 
@@ -12,8 +13,10 @@ import React, { useState } from "react";
 export default function BookingForm() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
+const handleAction = () => {toast.success('Success!')}
+
   return (
-    <form className={css.bookingForm}>
+    <form className={css.bookingForm}  action={handleAction}>
       <div className={css.headerBlock}>
         <h3 className={css.title}>Book your campervan now</h3>
         <p className={css.subtitle}>
@@ -66,7 +69,7 @@ export default function BookingForm() {
           ></textarea>
         </label>
       </div>
-      <button type="submit" className={css.sendBtn}>
+      <button type="submit" className={css.sendBtn} >
         Send
       </button>
     </form>

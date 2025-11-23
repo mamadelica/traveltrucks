@@ -9,3 +9,6 @@
 .iconMap {
   margin-right: 4px;
 }
+.ratingText {
+  border-bottom: 1px solid #000;
+}
