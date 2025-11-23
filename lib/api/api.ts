@@ -11,10 +11,10 @@ interface CampersParams {
   filter?: string;
   page?: number;
   limit?: number;
-  location: string;
-  equipment: EquipmentId[];
-  type: VehicleTypeId | "";
-  transmission: "automatic" | "manual";
+  location?: string;
+  equipment?: EquipmentId[];
+  type?: VehicleTypeId | "";
+  transmission?: "automatic" | "manual";
 }
 
 export interface Data {
@@ -61,41 +61,28 @@ export interface Reviews {
   comment: string;
 }
 
-export async function fetchCampers(params?: CampersParams): Promise<Data> {
-  const { location, equipment, type, transmission } =
-    useFiltersStore.getState();
-
+// "чиста" функція — формує URL тільки з переданих параметрів
+export async function fetchCampers(params: CampersParams): Promise<Data> {
   const query = new URLSearchParams();
 
-  // location → search
+  params.equipment?.forEach((key) => query.append(key, "true"));
+  if (params.type) query.append("filter", params.type);
+  if (params.transmission === "automatic")
+    query.append("transmission", "automatic");
+  if (params.page !== undefined) query.append("page", String(params.page));
+  if (params.limit !== undefined) query.append("limit", String(params.limit));
+  if (params.location) query.append("location", params.location);
 
-  // equipment → додаємо тільки якщо true (тобто вибрано)
-  equipment.forEach((key) => {
-    query.append(key, "true");
-  });
-
-  // type → filter
-  if (type) query.append("filter", type);
-  if (transmission === "automatic") query.append("transmission", "automatic");
-  // додаткові параметри (page, limit)
-  if (params?.page !== undefined) query.append("page", String(params.page));
-  if (params?.limit !== undefined) query.append("limit", String(params.limit));
-  if (location) query.append("location", location);
   const url = `${backendApi.defaults.baseURL}/campers?${query.toString()}`;
-
+  console.log(url);
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch campers: ${response.statusText}`);
   }
-
-  const data: Data = await response.json();
-  return data;
+  return response.json();
 }
 
-export const getCamperById = async (id: string): Promise<Camper> => {
-  const response = await backendApi.get<Camper>(`/campers/${id}`);
-  return response.data;
-};
+// loadCampers збирає фільтри зі стору + додає пагінацію
 export async function loadCampers(params?: { page?: number; limit?: number }) {
   const { setCampers, setLoading, setError } = useCampersStore.getState();
   const { location, equipment, type, transmission } =
@@ -104,8 +91,8 @@ export async function loadCampers(params?: { page?: number; limit?: number }) {
   try {
     setLoading(true);
     const data = await fetchCampers({
-      ...params,
-      location,
+      ...params, // page, limit
+      location, // фільтри зі стору
       equipment,
       type,
       transmission,

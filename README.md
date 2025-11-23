@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚐 Travel Trucks
 
-## Getting Started
+## Опис проєкту
 
-First, run the development server:
+**Travel Trucks** — це веб-застосунок для бронювання та перегляду кемперів, створений з акцентом на доступність, масштабованість та дружній інтерфейс.  
+Проєкт поєднує сучасні технології фронтенду з теплим, підтримуючим дизайном, щоб користувачі могли легко знаходити та бронювати транспорт для подорожей.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Основні функції
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🔍 **Пошук та фільтрація** кемперів за параметрами (тип, обладнання, трансмісія).
+- 📑 **Детальні картки** з описом та іконками для кожної функції.
+- ❤️ **Система улюблених** — збереження кемперів у локальному сховищі.
+- 📦 **Пагінація** — поступове завантаження даних без втрати стану.
+- 🌍 **Локалізація та адаптивність** — підтримка різних мов та пристроїв.
+- 🛠️ **Масштабоване управління станом** через React Context та zustand з суворою типізацією TypeScript.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Установка
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Клонуйте репозиторій:
+   git clone https://github.com/username/travel-trucks.git
+2. Перейдіть у директорію проєкту:
+   cd travel-trucks
+3. Встановіть залежності:
+   npm install
+4. Запустіть локальний сервер:
+   npm run dev
 
-## Learn More
+## Використання
 
-To learn more about Next.js, take a look at the following resources:
+- Відкрийте http://localhost:3000 у браузері.
+- Використовуйте панель фільтрів для пошуку потрібного кемпера.
+- Додавайте кемпери до улюблених, щоб швидко знаходити їх пізніше.
+- Переглядайте деталі та бронюйте транспорт для подорожей.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Технології
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ⚛️ **Next.js** — побудова компонентів та UI-логіки
+- 🔒 **TypeScript (strict mode)** — сувора типізація та безпечний код
+- 🗂️ **Zustand + React Context** — глобальне управління станом
+- 🎨 **CSS Modules** — адаптивні стилі та модульна архітектура
+- 🌐 **React Router** — маршрутизація сторінок
+- 📅 **react-datepicker** — інтеграція календаря для бронювання
+- 🖼️ **SVG спрайти** — масштабовані іконки для функцій кемперів
+- 💾 **LocalStorage** — збереження улюблених кемперів
 
-## Deploy on Vercel
+## Автор
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+👩‍💻 **Анастасія** — Frontend Developer.  
+Спеціалізується на React, Next.js, TypeScript, управлінні станом (Context, zustand) та створенні доступних, адаптивних інтерфейсів.

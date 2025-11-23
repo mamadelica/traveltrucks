@@ -30,6 +30,7 @@ export default function CampersGrid() {
   useEffect(() => {
     loadCampers({ page, limit: 4 });
   }, [page]);
+  console.log(campersList);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;

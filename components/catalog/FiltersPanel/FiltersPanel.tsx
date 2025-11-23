@@ -33,12 +33,12 @@ export default function FiltersPanel() {
     clearFilters,
   } = useFiltersStore();
 
-  const { clearCempers } = useCampersStore();
+  const { clearCampers } = useCampersStore();
 
   const handleSubmit = async () => {
-    clearCempers();
+    clearCampers();
+    // clearFilters();
     await loadCampers({ page: 1, limit: 4 });
-    clearFilters();
   };
 
   return (
