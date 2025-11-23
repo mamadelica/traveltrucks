@@ -3,19 +3,20 @@
 import { Camper, loadCampers } from "@/lib/api/api";
 import CardMeta from "../CardMeta/CardMeta";
 import css from "./CampersGrid.module.css";
-// import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import FeaturesList from "@/components/sections/FeaturesList/FeaturesList";
 import { useFavoritesStore } from "@/lib/Store/FavoriteContext";
 import { useCampersStore } from "@/lib/Store/campersStore";
 import { useEffect, useState } from "react";
+import { usePaginationStore } from "@/lib/Store/paginationStore";
 
 export default function CampersGrid() {
   const [page, setPage] = useState(1);
   const router = useRouter();
   const { favoriteIds, toggleFavorite } = useFavoritesStore();
-  const { campers: campersList, loading, error, total } = useCampersStore();
+  const { loading, error, total } = useCampersStore();
+  const { results: campersList, loadMore } = usePaginationStore();
   const limit = 4;
   const totalPages = Math.ceil(total / limit);
 
@@ -25,12 +26,16 @@ export default function CampersGrid() {
 
   const handleLoadMore = () => {
     setPage((prev) => prev + 1);
+    loadMore();
   };
+
+  useEffect(() => {
+    loadMore();
+  }, []);
 
   useEffect(() => {
     loadCampers({ page, limit: 4 });
   }, [page]);
-  console.log(campersList);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -38,11 +43,11 @@ export default function CampersGrid() {
   return (
     <div className={css.campersListWrapper}>
       <ul className={css.campersList}>
-        {campersList.map((camper: Camper) => {
+        {campersList.map((camper: Camper, index) => {
           const isActive = favoriteIds.includes(camper.id);
 
           return (
-            <li key={camper.id} className={css.campersItem}>
+            <li key={`${camper.id}-${index}`} className={css.campersItem}>
               <div className={css.camperImgWrapper}>
                 <Image
                   src={camper.gallery[0]?.thumb}

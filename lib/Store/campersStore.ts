@@ -6,8 +6,8 @@ interface CampersState {
   total: number;
   loading: boolean;
   error: string | null;
-  setCampers: (data: Data) => void; // перезапис (Search)
-  appendCampers: (data: Data) => void; // додавання (Load more)
+  setCampers: (data: Data) => void;
+  appendCampers: (data: Data) => void;
   setLoading: (value: boolean) => void;
   setError: (message: string | null) => void;
   clearCampers: () => void;
@@ -19,7 +19,6 @@ export const useCampersStore = create<CampersState>((set) => ({
   loading: false,
   error: null,
 
-  // 🔹 Використовуємо при Search
   setCampers: (data) =>
     set({
       campers: data.items,
@@ -28,7 +27,6 @@ export const useCampersStore = create<CampersState>((set) => ({
       error: null,
     }),
 
-  // 🔹 Використовуємо при Load more
   appendCampers: (data) =>
     set((state) => {
       const allCampers = [...state.campers, ...data.items];

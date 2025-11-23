@@ -1,4 +1,3 @@
-// filtersStore.ts
 import { create } from "zustand";
 import {
   FiltersState,

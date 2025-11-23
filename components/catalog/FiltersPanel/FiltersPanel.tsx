@@ -5,6 +5,7 @@ import css from "./FiltersPanel.module.css";
 import { useFiltersStore } from "@/lib/Store/FiltersStore";
 import { loadCampers } from "@/lib/api/api";
 import { useCampersStore } from "@/lib/Store/campersStore";
+import { usePaginationStore } from "@/lib/Store/paginationStore";
 
 const equipmentFilters: { id: EquipmentId; label: string }[] = [
   { id: "AC", label: "AC" },
@@ -30,15 +31,17 @@ export default function FiltersPanel() {
     setType,
     transmission,
     setTransmission,
-    // clearFilters,
+    clearFilters,
   } = useFiltersStore();
-
+  const { search } = usePaginationStore();
   const { clearCampers } = useCampersStore();
 
   const handleSubmit = async () => {
     clearCampers();
-    // clearFilters();
+
     await loadCampers({ page: 1, limit: 4 });
+    search();
+    clearFilters();
   };
 
   return (
