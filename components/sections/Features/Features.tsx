@@ -1,5 +1,6 @@
 import { Camper } from "@/lib/api/api";
 import css from "./Features.module.css";
+import FeaturesList from "../FeaturesList/FeaturesList";
 
 interface Props {
   camper: Camper
@@ -9,38 +10,7 @@ export default function Features({camper}: Props) {
   return (
     <div className={css.featuresWrapper}>
       <div className={css.equipmentWrapper}>
-        <ul className={css.equipmentList}>
-          <li className={css.equipmentItem}>
-            <svg className={css.icon} width="20" height="20">
-              <use href="/icons/categories-sprite.svg#icon-automatic" />
-            </svg>
-            <span>text</span>
-          </li>
-          <li className={css.equipmentItem}>
-            <svg className={css.icon} width="20" height="20">
-              <use href="/icons/categories-sprite.svg#icon-automatic" />
-            </svg>
-            <span>text</span>
-          </li>
-          <li className={css.equipmentItem}>
-            <svg className={css.icon} width="20" height="20">
-              <use href="/icons/categories-sprite.svg#icon-automatic" />
-            </svg>
-            <span>text</span>
-          </li>
-          <li className={css.equipmentItem}>
-            <svg className={css.icon} width="20" height="20">
-              <use href="/icons/categories-sprite.svg#icon-automatic" />
-            </svg>
-            <span>text</span>
-          </li>
-          <li className={css.equipmentItem}>
-            <svg className={css.icon} width="20" height="20">
-              <use href="/icons/categories-sprite.svg#icon-automatic" />
-            </svg>
-            <span>text</span>
-          </li>
-        </ul>
+       <FeaturesList camper={camper}/>
       </div>
       <div className={css.detailsWrapper}>
         <table className={css.vehicleTable}>

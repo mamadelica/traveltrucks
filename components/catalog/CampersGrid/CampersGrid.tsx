@@ -7,25 +7,9 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
-
-
-
-const featureIcons: Record<string, string> = {
-  AC: "/icons/categories-sprite.svg#icon-ac",
-  Bathroom: "/icons/categories-sprite.svg#icon-bathroom",
-  Kitchen: "/icons/categories-sprite.svg#icon-kitchen",
-  TV: "/icons/categories-sprite.svg#icon-tv",
-  Radio: "/icons/categories-sprite.svg#icon-radio",
-  Refrigerator: "/icons/categories-sprite.svg#icon-refrigerator",
-  Microwave: "/icons/categories-sprite.svg#icon-microwave",
-  Gas: "/icons/categories-sprite.svg#icon-gas",
-  Water: "/icons/categories-sprite.svg#icon-water",
-};
-
+import FeaturesList from "@/components/sections/FeaturesList/FeaturesList";
 
 export default function CampersGrid() {
-  
   const router = useRouter();
 
   // Ініціалізація стану одразу з localStorage
@@ -57,13 +41,12 @@ export default function CampersGrid() {
     );
   };
 
-  const handleClick = (id:string) => {
-  router.push(`/catalog/${id}`)
-}
+  const handleClick = (id: string) => {
+    router.push(`/catalog/${id}`);
+  };
 
   return (
     <div className={css.campersListWrapper}>
-      
       {isError && <p>Sorry, we fell...</p>}
 
       <ul className={css.campersList}>
@@ -85,7 +68,11 @@ export default function CampersGrid() {
               <div className={css.camperInfo}>
                 <div className={css.cardHeader}>
                   <div className={css.cardHeaderWrapper}>
-                    <h3 className={css.cardHeaderTitle}>{camper.name.length > 20 ? camper.name.slice(0, 20) + "...": camper.name}</h3>
+                    <h3 className={css.cardHeaderTitle}>
+                      {camper.name.length > 20
+                        ? camper.name.slice(0, 20) + "..."
+                        : camper.name}
+                    </h3>
 
                     <div className={css.priceWrapper}>
                       <p className={css.camperPrise}>€{camper.price}.00</p>
@@ -116,35 +103,20 @@ export default function CampersGrid() {
                   />
                 </div>
 
-                <p className={css.camperDescr}>{camper.description.slice(0, 60)+ "..."}</p>
+                <p className={css.camperDescr}>
+                  {camper.description.slice(0, 60) + "..."}
+                </p>
 
-                <div>
-                  <ul className={css.featuresList}>
-  {[
-    camper.AC && "AC",
-    camper.bathroom && "Bathroom",
-    camper.kitchen && "Kitchen",
-    camper.TV && "TV",
-    camper.radio && "Radio",
-    camper.refrigerator && "Refrigerator",
-    camper.microwave && "Microwave",
-    camper.gas && "Gas",
-    camper.water && "Water",
-  ]
-    .filter(Boolean)
-    .map((feature, idx) => (
-      <li key={idx} className={css.featuresItem}>
-        <svg className={css.featureIcon} width="20" height="20">
-          <use href={feature === false ? "" : featureIcons[feature]} />
-        </svg>
-        <span>{feature}</span>
-      </li>
-    ))}
-</ul>
-
+                <div className={css.featuresListWrapper}>
+                  <FeaturesList camper={camper} />
                 </div>
 
-                <button onClick={() => handleClick(camper.id)} className={css.showmoreBtn}>Show more</button>
+                <button
+                  onClick={() => handleClick(camper.id)}
+                  className={css.showmoreBtn}
+                >
+                  Show more
+                </button>
               </div>
             </li>
           );
