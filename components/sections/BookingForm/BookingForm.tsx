@@ -2,10 +2,13 @@
 import "react-datepicker/dist/react-datepicker.css";
 
 import css from "./BookingForm.module.css";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
+import { enGB } from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+
+registerLocale("enGB", enGB);
 
 export default function BookingForm() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -54,6 +57,9 @@ export default function BookingForm() {
               className={css.input}
               dateFormat="dd.MM.yyyy"
               calendarClassName="customCalendar"
+              formatWeekDay={(nameOfDay) => nameOfDay.slice(0, 3).toUpperCase()}
+              locale="enGB"
+              minDate={new Date()}
             />
           </div>
         </div>

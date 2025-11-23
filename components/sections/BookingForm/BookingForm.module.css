@@ -82,35 +82,33 @@
   height: 56px;
 }
 
-/* Календар */
-/* Загальний контейнер календаря */
-.customCalendar {
+/* calendar */
+:global(.customCalendar) {
+  font-family: "Inter", sans-serif;
   background-color: #fff;
   border: 1px solid #475467;
   border-radius: 12px;
-  padding: 12px;
-  font-family: "Inter", sans-serif;
-  width: 276px;
 }
 
-:global(.customCalendar .react-datepicker__month-container) {
-  width: 276px;
-}
-
-/* Верхня панель з місяцем і навігацією */
 :global(.customCalendar .react-datepicker__header) {
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.2;
   text-align: center;
   color: #101828;
-
+  margin-top: 10px;
   background-color: #fff;
   padding: 8px 0;
   border-bottom: none;
 }
 
 :global(.customCalendar .react-datepicker__day-names) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3px;
+
   font-weight: 600;
   font-size: 12px;
   line-height: 1.2;
@@ -118,15 +116,41 @@
   color: #475467;
   border-bottom: 1px solid #475467;
   margin-bottom: 8px;
+
+  width: 274px;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 :global(.customCalendar .react-datepicker__day-name) {
+  font-weight: 600;
   font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+  color: #475467;
   text-transform: uppercase;
 }
 
-/* Кожен день */
+:global(.customCalendar .react-datepicker__month) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+:global(.customCalendar .react-datepicker__week) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 :global(.customCalendar .react-datepicker__day) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 36px;
   height: 32px;
   line-height: 1.2;
@@ -140,32 +164,38 @@
   transition: background-color 0.2s ease;
 }
 
-/* Сьогодні */
-:global(.customCalendar .react-datepicker__day--today) {
-  font-weight: bold;
+:global(.customCalendar .react-datepicker__day:hover) {
+  background-color: #98a2b3;
+  border-radius: 32px;
+}
+
+:global(.customCalendar .react-datepicker__day--today:focus) {
+  background: #475467;
+  color: #f7f7f7;
+  border-radius: 32px;
 }
 
 :global(.customCalendar .react-datepicker__day--selected) {
   background: #475467;
   color: #fff;
-  font-weight: bold;
 }
 
-:global(.customCalendar .react-datepicker__day:hover) {
-  border-radius: 32px;
-  /* color: #333; */
+:global(.customCalendar .react-datepicker__navigation) {
+  top: 12px;
 }
 
-/* Навігаційні стрілки */
-.customCalendar .react-datepicker__navigation {
-  top: 10px;
+:global(.customCalendar .react-datepicker__navigation-icon--previous) {
+  right: -6px;
 }
 
-.customCalendar .react-datepicker__navigation-icon::before {
-  border-color: #98a2b3;
+:global(.customCalendar .react-datepicker__navigation--next) {
+  right: 6px;
 }
 
-/* Дні поза поточним місяцем */
+:global(.customCalendar .react-datepicker__navigation:hover) {
+  background-color: transparent;
+}
+
 :global(.customCalendar .react-datepicker__day--outside-month) {
   color: #98a2b3;
   margin: 0 auto;

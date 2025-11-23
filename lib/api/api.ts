@@ -82,16 +82,13 @@ export async function fetchCampers(params?: CampersParams): Promise<Data> {
   if (params?.limit !== undefined) query.append("limit", String(params.limit));
   if (location) query.append("location", location);
   const url = `${backendApi.defaults.baseURL}/campers?${query.toString()}`;
-  console.log(url);
 
   const response = await fetch(url);
-  console.log(response);
   if (!response.ok) {
     throw new Error(`Failed to fetch campers: ${response.statusText}`);
   }
 
   const data: Data = await response.json();
-  console.log(data);
   return data;
 }
 
