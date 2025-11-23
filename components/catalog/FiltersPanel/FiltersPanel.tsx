@@ -30,7 +30,7 @@ export default function FiltersPanel() {
     setType,
     transmission,
     setTransmission,
-    clearFilters,
+    // clearFilters,
   } = useFiltersStore();
 
   const { clearCampers } = useCampersStore();

@@ -74,7 +74,7 @@ export async function fetchCampers(params: CampersParams): Promise<Data> {
   if (params.location) query.append("location", params.location);
 
   const url = `${backendApi.defaults.baseURL}/campers?${query.toString()}`;
-  console.log(url);
+
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch campers: ${response.statusText}`);
@@ -102,3 +102,8 @@ export async function loadCampers(params?: { page?: number; limit?: number }) {
     setError(err instanceof Error ? err.message : "Unknown error");
   }
 }
+
+export const getCamperById = async (id: string): Promise<Camper> => {
+  const response = await backendApi.get<Camper>(`/campers/${id}`);
+  return response.data;
+};
