@@ -3,7 +3,7 @@
 import { Camper, getCampersData } from "@/lib/api/api";
 import CardMeta from "../CardMeta/CardMeta";
 import css from "./CampersGrid.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -25,8 +25,23 @@ const featureIcons: Record<string, string> = {
 
 
 export default function CampersGrid() {
-  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  
   const router = useRouter();
+
+  // Ініціалізація стану одразу з localStorage
+  const [favoriteIds, setFavoriteIds] = useState<string[]>(() => {
+    try {
+      const stored = localStorage.getItem("favoriteCampers");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Збереження у localStorage при кожній зміні
+  useEffect(() => {
+    localStorage.setItem("favoriteCampers", JSON.stringify(favoriteIds));
+  }, [favoriteIds]);
 
   const { data, isError } = useQuery({
     queryKey: ["campers"],
