@@ -1,5 +1,4 @@
 .featuresList {
-  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -17,4 +16,5 @@
   padding: 12px 18px;
   height: 48px;
   background: #f2f4f7;
+  mix-blend-mode: multiply;
 }

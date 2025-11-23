@@ -3,11 +3,12 @@
   --background-grey: #f7f7f7;
   --foreground: #101828;
   --accent: #d84343;
-  --muted: #666666;
+  --muted: #6c717b;
   --button-bg: #e44848;
   --button-text: #ffffff;
   --border: 1px solid #dadde1;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --light-text: #475467;
 }
 
 * {

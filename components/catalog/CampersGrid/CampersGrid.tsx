@@ -1,36 +1,41 @@
 "use client";
 
-import { Camper, getCampersData } from "@/lib/api/api";
+import { Camper, loadCampers } from "@/lib/api/api";
 import CardMeta from "../CardMeta/CardMeta";
 import css from "./CampersGrid.module.css";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import FeaturesList from "@/components/sections/FeaturesList/FeaturesList";
-import { useFavorites } from "@/lib/Store/FavoriteContext";
+import { useFavoritesStore } from "@/lib/Store/FavoriteContext";
+import { useCampersStore } from "@/lib/Store/campersStore";
+import { useEffect, useState } from "react";
 
 export default function CampersGrid() {
+  const [page, setPage] = useState(1);
   const router = useRouter();
-
-const { favoriteIds, toggleFavorite } = useFavorites(); 
-  const { data, isError } = useQuery({
-    queryKey: ["campers"],
-    queryFn: async () => await getCampersData({ page: 1, limit: 10 }),
-    refetchOnMount: false,
-  });
-
-  const campersList = data?.items ?? [];
-
-  
+  const { favoriteIds, toggleFavorite } = useFavoritesStore();
+  const { campers: campersList, loading, error, total } = useCampersStore();
+  const limit = 4;
+  const totalPages = Math.ceil(total / limit);
 
   const handleClick = (id: string) => {
     router.push(`/catalog/${id}`);
   };
 
+  const handleLoadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    loadCampers({ page, limit: 4 });
+  }, [page]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className={css.campersListWrapper}>
-      {isError && <p>Sorry, we fell...</p>}
-
       <ul className={css.campersList}>
         {campersList.map((camper: Camper) => {
           const isActive = favoriteIds.includes(camper.id);
@@ -105,7 +110,11 @@ const { favoriteIds, toggleFavorite } = useFavorites();
         })}
       </ul>
 
-      <button className={css.loadmoreBtn}>Load more</button>
+      {totalPages > page && (
+        <button className={css.loadmoreBtn} onClick={handleLoadMore}>
+          Load more
+        </button>
+      )}
     </div>
   );
 }

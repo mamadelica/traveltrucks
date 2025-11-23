@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,8 +8,14 @@ export default function Header() {
   const pathname = usePathname();
   return (
     <header className={css.header}>
-          <Link href="/" className={css.logo}>
-        <Image src="/icons/logo.svg" alt="Logo" width={136} height={16}></Image>
+      <Link href="/" className={css.logo}>
+        <Image
+          src="/icons/logo.svg"
+          alt="Logo"
+          width={136}
+          height={16}
+          loading="eager"
+        ></Image>
       </Link>
 
       <nav className={css.headerNav}>

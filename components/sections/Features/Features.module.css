@@ -3,7 +3,7 @@
   padding: 44px 52px;
   width: 631px;
   height: 588px;
-  background: #f7f7f7;
+  background: var(--background-grey);
 
   display: flex;
   flex-direction: column;
@@ -14,31 +14,7 @@
   min-height: 104px;
 }
 
-.equipmentList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-}
-
-.equipmentItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 8px;
-
-  border-radius: 100px;
-  padding: 12px 18px;
-  width: 123px;
-  height: 48px;
-
-  background: #f2f4f7;
-  mix-blend-mode: multiply;
-}
-
 .detailsWrapper {
-  /* background-color: aquamarine; */
   min-height: 296px;
 }
 
@@ -46,7 +22,7 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
-  color: #101828;
+  color: var(--foreground);
   text-align: left;
 }
 
@@ -71,7 +47,7 @@
   border-collapse: collapse;
   font-size: 16px;
   line-height: 1.4;
-  color: #101828;
+  color: var(--foreground);
 }
 .vehicleTable {
   border-collapse: separate;

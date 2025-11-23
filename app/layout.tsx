@@ -3,13 +3,15 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import { Inter } from "next/font/google";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import { FavoritesProvider } from "@/lib/Store/FavoriteContext";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "TravelTrucks — Campervan Rentals",
   description:
     "Find your dream camper and hit the road. Browse photos, features, reviews, and book online.",
+  icons: {
+    icon: "/icons/favicon.svg",
+  },
 };
 
 const inter = Inter({
@@ -27,14 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable}`}>
-        <div><Toaster position="top-right"
-  reverseOrder={false}/></div>
+        <div>
+          <Toaster position="top-right" reverseOrder={false} />
+        </div>
         <TanStackProvider>
-          <FavoritesProvider>
-            <Header />
+          <Header />
 
-            {children}
-          </FavoritesProvider>
+          {children}
         </TanStackProvider>
       </body>
     </html>

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 24px;
 
-  border: 1px solid #dadde1;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 44px 57px 0 57px;
   width: 641px;
@@ -22,14 +22,14 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
-  color: #101828;
+  color: var(--foreground);
 }
 
 .subtitle {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #6c717b;
+  color: var(--muted);
 }
 
 .fieldsBlock {
@@ -41,13 +41,10 @@
   width: 100%;
 }
 
-.label {
-}
-
 .input {
   border-radius: 12px;
   border: none;
-  background: #f7f7f7;
+  background: var(--background-grey);
   padding: 18px 337px 18px 18px;
   width: 527px;
   height: 60px;
@@ -55,10 +52,10 @@
 
 .textarea {
   resize: none;
-  font-family: --font-family;
+  font-family: var(--font-family);
   border-radius: 10px;
   border: none;
-  background: #f7f7f7;
+  background: var(--background-grey);
   padding: 18px 308px 76px 18px;
   width: 527px;
   height: 118px;
@@ -69,13 +66,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #6c717b;
+  color: var(--muted);
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  box-shadow: none;
 }
 
 .sendBtn {
@@ -94,6 +90,11 @@
   border-radius: 12px;
   padding: 12px;
   font-family: "Inter", sans-serif;
+  width: 276px;
+}
+
+:global(.customCalendar .react-datepicker__month-container) {
+  width: 276px;
 }
 
 /* Верхня панель з місяцем і навігацією */
@@ -128,9 +129,11 @@
 :global(.customCalendar .react-datepicker__day) {
   width: 36px;
   height: 32px;
-  line-height: 36px;
+  line-height: 1.2;
   text-align: center;
   border-radius: 32px;
+  margin: 0 auto;
+
   font-size: 14px;
   color: #333;
   cursor: pointer;
@@ -165,4 +168,5 @@
 /* Дні поза поточним місяцем */
 :global(.customCalendar .react-datepicker__day--outside-month) {
   color: #98a2b3;
+  margin: 0 auto;
 }

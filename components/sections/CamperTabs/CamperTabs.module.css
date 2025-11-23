@@ -8,25 +8,23 @@
   gap: 40px;
   min-height: 48px;
 
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #dadde1;
 }
 .tabBtn {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
-  color: #101828;
+  color: var(--foreground);
   background-color: transparent;
   border: none;
-
   position: relative;
 
   padding: 8px 0;
-  cursor: pointer;
 }
 .tabBtn:hover,
 .tabBtn:focus {
   background-color: transparent;
-  color: #101828;
+  color: var(--foreground);
 }
 
 .tabBtn.active::after {
@@ -36,5 +34,5 @@
   left: 0;
   width: 100%;
   height: 5px;
-  background-color: #e44848;
+  background-color: var(--button-bg);
 }

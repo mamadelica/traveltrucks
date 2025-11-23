@@ -14,7 +14,7 @@ export default function RatingStars({ reviews }: Props) {
             <div className={css.reviewCircle}>
               {review.reviewer_name.slice(0, 1)}
             </div>
-            
+
             <div className={css.reviewerWrapper}>
               <p className={css.reviewerName}>{review.reviewer_name}</p>
 
@@ -31,7 +31,6 @@ export default function RatingStars({ reviews }: Props) {
                   </svg>
                 ))}
               </div>
-
             </div>
           </div>
 

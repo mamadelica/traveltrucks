@@ -11,15 +11,17 @@ import { Camper, getCamperById } from "@/lib/api/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 
-
 export default function CamperPage() {
   const [activeTab, setActiveTab] = useState("features");
 
   const params = useParams();
   const id = params?.id as string;
 
-  
-  const { data: camper, isLoading, isError } = useQuery<Camper>({
+  const {
+    data: camper,
+    isLoading,
+    isError,
+  } = useQuery<Camper>({
     queryKey: ["camper", id],
     queryFn: () => getCamperById(id),
     refetchOnMount: false,
@@ -39,7 +41,7 @@ export default function CamperPage() {
           ) : (
             <RatingStars reviews={camper.reviews} />
           )}
-          <BookingForm/>
+          <BookingForm />
         </div>
       </div>
     </main>

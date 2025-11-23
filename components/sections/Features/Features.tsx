@@ -3,14 +3,14 @@ import css from "./Features.module.css";
 import FeaturesList from "../FeaturesList/FeaturesList";
 
 interface Props {
-  camper: Camper
+  camper: Camper;
 }
 
-export default function Features({camper}: Props) {
+export default function Features({ camper }: Props) {
   return (
     <div className={css.featuresWrapper}>
       <div className={css.equipmentWrapper}>
-       <FeaturesList camper={camper}/>
+        <FeaturesList camper={camper} />
       </div>
       <div className={css.detailsWrapper}>
         <table className={css.vehicleTable}>

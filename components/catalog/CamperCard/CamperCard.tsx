@@ -20,22 +20,25 @@ export default function CamperCard({ camper }: CamperCardProps) {
         reviews={camper.reviews.length}
       />
 
-      {/* Ціна */}
       <p className={css.camperPrise}>€{camper.price}.00</p>
 
-      {/* Галерея */}
       <ul className={css.cardGallery}>
         {camper.gallery.map((img, idx) => (
-          <li key={idx} >
-            <Image src={img.original} alt={`${camper.name} photo ${idx + 1}`} width={292} height={320} className={css.cardPhoto}  unoptimized
-/>
+          <li key={idx}>
+            <Image
+              src={img.original}
+              alt={`${camper.name} photo ${idx + 1}`}
+              width={292}
+              height={320}
+              className={css.cardPhoto}
+              unoptimized
+              loading="eager"
+            />
           </li>
         ))}
       </ul>
 
-      {/* Опис */}
       <p className={css.cardDescription}>{camper.description}</p>
-
     </div>
   );
 }

@@ -1,11 +1,9 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import css from "./page.module.css";
 
-
 export default function HomePage() {
-
-const router = useRouter()
+  const router = useRouter();
 
   return (
     <main className={css.heroSection}>
@@ -14,7 +12,11 @@ const router = useRouter()
         <p className={css.subtitle}>
           You can find everything you want in our catalog
         </p>
-        <button onClick={() => router.push("/catalog")} className={css.button} type="button">
+        <button
+          onClick={() => router.push("/catalog")}
+          className={css.button}
+          type="button"
+        >
           View Now
         </button>
       </div>

@@ -6,9 +6,6 @@
   width: 100%;
 }
 
-.logo {
-}
-
 .headerNav {
   margin-left: 450px;
 }
@@ -19,7 +16,6 @@
   justify-content: flex-start;
   flex-direction: row;
   gap: 32px;
-
   list-style: none;
 }
 
@@ -39,7 +35,4 @@
 
 .active {
   color: var(--accent);
-}
-
-.navLink {
 }

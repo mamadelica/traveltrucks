@@ -7,16 +7,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-
-
-
 export default function BookingForm() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-const handleAction = () => {toast.success('Success!')}
+  const handleAction = () => {
+    toast.success("Success!");
+  };
 
   return (
-    <form className={css.bookingForm}  action={handleAction}>
+    <form className={css.bookingForm} action={handleAction}>
       <div className={css.headerBlock}>
         <h3 className={css.title}>Book your campervan now</h3>
         <p className={css.subtitle}>
@@ -45,7 +44,6 @@ const handleAction = () => {toast.success('Success!')}
           />
         </label>
 
-        
         {/* calendar */}
         <div className={css.field}>
           <div className={css.calendarWrapper}>
@@ -69,7 +67,7 @@ const handleAction = () => {toast.success('Success!')}
           ></textarea>
         </label>
       </div>
-      <button type="submit" className={css.sendBtn} >
+      <button type="submit" className={css.sendBtn}>
         Send
       </button>
     </form>

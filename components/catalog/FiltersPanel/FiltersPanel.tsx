@@ -1,42 +1,72 @@
 "use client";
 
-import { useState } from "react";
+import { EquipmentId, VehicleTypeId } from "@/lib/types/filtersTypes";
 import css from "./FiltersPanel.module.css";
+import { useFiltersStore } from "@/lib/Store/FiltersStore";
+import { loadCampers } from "@/lib/api/api";
+import { useCampersStore } from "@/lib/Store/campersStore";
 
-const equipmentFilters = [
-  { id: "ac", label: "AC" },
+const equipmentFilters: { id: EquipmentId; label: string }[] = [
+  { id: "AC", label: "AC" },
   { id: "automatic", label: "Automatic" },
   { id: "kitchen", label: "Kitchen" },
-  { id: "tv", label: "TV" },
+  { id: "TV", label: "TV" },
   { id: "bathroom", label: "Bathroom" },
 ];
 
-const vehicleTypes = [
-  { id: "van", label: "Van" },
-  { id: "fully-integrated", label: "Fully Integrated" },
+const vehicleTypes: { id: VehicleTypeId; label: string }[] = [
+  { id: "panelTruck", label: "Van" },
+  { id: "fullyIntegrated", label: "Fully Integrated" },
   { id: "alcove", label: "Alcove" },
 ];
 
 export default function FiltersPanel() {
-  const [text, setText] = useState("")
+  const {
+    location,
+    setLocation,
+    equipment,
+    toggleEquipment,
+    type,
+    setType,
+    transmission,
+    setTransmission,
+    clearFilters,
+  } = useFiltersStore();
+
+  const { clearCempers } = useCampersStore();
+
+  const handleSubmit = async () => {
+    clearCempers();
+    await loadCampers({ page: 1, limit: 4 });
+    clearFilters();
+  };
+
   return (
-    <form className={css.form} aria-label="Vehicle search filters">
+    <form
+      action={handleSubmit}
+      className={css.form}
+      aria-label="Vehicle search filters"
+    >
       {/* Location */}
       <fieldset className={css.group}>
         <legend className={css.locationLegend}>Location</legend>
-
         <div className={css.inputWrapper}>
-
           <svg className={css.iconMap} aria-hidden="true" viewBox="0 0 20 20">
-  <use href={!text ? "/icons/categories-sprite.svg#icon-map-light" : "/icons/categories-sprite.svg#icon-map-dark"} />
-</svg>
+            <use
+              href={
+                !location
+                  ? "/icons/categories-sprite.svg#icon-map-light"
+                  : "/icons/categories-sprite.svg#icon-map-dark"
+              }
+            />
+          </svg>
           <input
             type="text"
             name="location"
             placeholder="City"
             className={css.input}
-            value={text}  
-            onChange={(event => setText(event.target.value))}
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
           />
         </div>
       </fieldset>
@@ -46,11 +76,9 @@ export default function FiltersPanel() {
       {/* Equipment */}
       <fieldset className={css.group}>
         <legend className={css.legend}>Vehicle equipment</legend>
-
         <svg className={css.separator}>
           <use href="/icons/separator.svg#icon-separator" />
         </svg>
-
         <div className={css.checkboxList}>
           {equipmentFilters.map(({ id, label }) => (
             <label key={id} className={css.checkboxItem}>
@@ -58,6 +86,20 @@ export default function FiltersPanel() {
                 type="checkbox"
                 name="equipment"
                 value={id}
+                checked={
+                  id === "automatic"
+                    ? transmission === "automatic"
+                    : equipment.includes(id)
+                }
+                onChange={() => {
+                  if (id === "automatic") {
+                    setTransmission(
+                      transmission === "automatic" ? "manual" : "automatic"
+                    );
+                  } else {
+                    toggleEquipment(id);
+                  }
+                }}
                 className={css.checkbox}
               />
               <div className={css.square}>
@@ -76,11 +118,9 @@ export default function FiltersPanel() {
       {/* Type */}
       <fieldset className={css.group}>
         <legend className={css.legend}>Vehicle type</legend>
-
         <svg className={css.separator}>
           <use href="/icons/separator.svg#icon-separator" />
         </svg>
-
         <div className={css.radioList}>
           {vehicleTypes.map(({ id, label }) => (
             <label key={id} className={css.radioItem}>
@@ -88,6 +128,8 @@ export default function FiltersPanel() {
                 type="radio"
                 name="type"
                 value={id}
+                checked={type === id}
+                onChange={() => setType(id)}
                 className={css.radio}
               />
               <div className={css.square}>
